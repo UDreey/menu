@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5r6npc0j2pgn"]
+
+[ext_resource type="Script" uid="uid://cnfj1vyowwaop" path="res://Script-menu/pause_menu.gd" id="1_ddlpt"]
+[ext_resource type="Theme" uid="uid://tx4qq5mlii5w" path="res://Assets/pause_menu.tres" id="2_dokru"]
+
+[node name="pause_menu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_ddlpt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.0980392)
+
+[node name="menu_holder" type="VBoxContainer" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -33.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Continuar_Jogo" type="Button" parent="menu_holder"]
+layout_mode = 2
+theme = ExtResource("2_dokru")
+text = "resume game"
+
+[node name="Config_menu" type="Button" parent="menu_holder"]
+layout_mode = 2
+theme = ExtResource("2_dokru")
+text = "options"
+
+[node name="Sair_do_jogo" type="Button" parent="menu_holder"]
+layout_mode = 2
+theme = ExtResource("2_dokru")
+text = "quit game"
+
+[connection signal="pressed" from="menu_holder/Continuar_Jogo" to="." method="_on_continuar_jogo_pressed"]
+[connection signal="pressed" from="menu_holder/Config_menu" to="." method="_on_config_menu_pressed"]
+[connection signal="pressed" from="menu_holder/Sair_do_jogo" to="." method="_on_sair_do_jogo_pressed"]
