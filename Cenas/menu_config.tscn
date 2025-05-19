@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://drn6v0t1y7pjb"]
+[gd_scene load_steps=11 format=3 uid="uid://drn6v0t1y7pjb"]
 
 [ext_resource type="Texture2D" uid="uid://cgd3ec0ctpu4y" path="res://Assets/raw2.png" id="1_kkprl"]
 [ext_resource type="Script" uid="uid://bektora8lcawp" path="res://Script-menu/menu_config.gd" id="1_rabp0"]
@@ -6,6 +6,8 @@
 [ext_resource type="Theme" uid="uid://tx4qq5mlii5w" path="res://Assets/pause_menu.tres" id="3_kkprl"]
 [ext_resource type="Texture2D" uid="uid://dumpvke22qnyr" path="res://Assets/seta - Copia (2).png" id="4_kkprl"]
 [ext_resource type="Texture2D" uid="uid://bvu1gg6qsa05r" path="res://Assets/space.png" id="5_rabp0"]
+[ext_resource type="AudioStream" uid="uid://8v2g6o7ysyqb" path="res://Sound/013_Confirm_03.wav" id="7_40i8v"]
+[ext_resource type="AudioStream" uid="uid://myk7bsuniafa" path="res://Sound/001_Hover_01.wav" id="8_rgsga"]
 
 [sub_resource type="Theme" id="Theme_cjgmv"]
 Label/colors/font_color = Color(1, 0.768627, 0.305882, 1)
@@ -168,4 +170,11 @@ theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("2_f12sv")
 text = "ATTACK"
 
+[node name="Audio_confirm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_40i8v")
+
+[node name="Audio_hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_rgsga")
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Return" to="." method="_on_return_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Return" to="." method="_on_return_pressed"]

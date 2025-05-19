@@ -1,17 +1,18 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@onready var audio_confirm: AudioStreamPlayer = $Audio_confirm
+@onready var audio_hover: AudioStreamPlayer = $Audio_hover
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-	
 
 
 func _on_return_pressed() -> void:
+	audio_confirm.play()
+	await get_tree().create_timer(0.35).timeout
 	get_tree().change_scene_to_file("res://Cenas/menu_inicial.tscn")
+	
+
+
+
+func _on_return_mouse_entered() -> void:
+	audio_hover.play()

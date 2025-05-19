@@ -1,9 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://cachn2ts0qnjc"]
+[gd_scene load_steps=28 format=3 uid="uid://cachn2ts0qnjc"]
 
 [ext_resource type="Script" uid="uid://bjrjjjcy4bny1" path="res://Script-menu/menu_inicial.gd" id="1_21lpp"]
 [ext_resource type="Texture2D" uid="uid://cgd3ec0ctpu4y" path="res://Assets/raw2.png" id="2_21lpp"]
 [ext_resource type="FontFile" uid="uid://c56hf5lax2ym3" path="res://Font/8-BIT WONDER.TTF" id="3_21lpp"]
 [ext_resource type="Theme" uid="uid://tx4qq5mlii5w" path="res://Assets/pause_menu.tres" id="4_v5lwh"]
+[ext_resource type="AudioStream" uid="uid://8v2g6o7ysyqb" path="res://Sound/013_Confirm_03.wav" id="5_o78ah"]
+[ext_resource type="AudioStream" uid="uid://myk7bsuniafa" path="res://Sound/001_Hover_01.wav" id="6_06ruf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qdvqo"]
 
@@ -195,7 +197,19 @@ theme = SubResource("Theme_3exob")
 text = "QUIT GAME"
 flat = true
 
+[node name="Audio_confirm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_o78ah")
+
+[node name="Audio_hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_06ruf")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/Start" to="." method="_on_start_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Start" to="." method="_on_inicar_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/Credit" to="." method="_on_credit_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Credit" to="." method="_on_creditos_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/Quit-game" to="." method="_on_quitgame_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Quit-game" to="." method="_on_sair_do_jogo_pressed"]
